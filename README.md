@@ -1,0 +1,1 @@
+Trabajo en progreso... manejo de expeciones segun el error en el tipo de peticion, ademas de ser un CRUD funcionbal en el puerto localhost:8080
