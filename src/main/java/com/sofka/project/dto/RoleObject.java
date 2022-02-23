@@ -1,38 +1,32 @@
-package com.sofka.project.model;
+package com.sofka.project.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-/**
- * Representa un Rol entidad
- */
-@Entity
-public class Role {
+public class RoleObject {
 
 // ------------------------------------------------------------- VARIABLES
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(length = 15, nullable = false, unique = true)
+    @NotBlank
+    @Size(max = 15)
     private String name;
 
 
 // ------------------------------------------------------------- CONSTRUCTORES
 
-    public Role() {
+    public RoleObject() {
     }
 
-    public Role(String name) {
+    public RoleObject(String name) {
         this.name = name;
     }
 
+    public RoleObject(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
-    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -49,7 +43,7 @@ public class Role {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Role other = (Role) obj;
+        RoleObject other = (RoleObject) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -58,12 +52,7 @@ public class Role {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Role [id=" + id + ", name=" + name + "]";
-    }
 
-    
 // ------------------------------------------------------------- GETTER-SETTERS
 
     public Long getId() {
@@ -81,6 +70,6 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
-
-
+  
+    
 }
