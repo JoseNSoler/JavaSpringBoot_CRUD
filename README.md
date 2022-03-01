@@ -1,4 +1,4 @@
-# Java: Servidor CRUD Springboot Hibernate
+# Java: Servidor CRUD Springboot Hibernate Usuario con Poryectos y Roles asignados
 
 <p align="center">
 <img src="https://www.sofka.com.co/wp-content/uploads/2021/02/sofkau-logo-horizontal.png">
