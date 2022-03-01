@@ -27,7 +27,7 @@ class CustomControllerAdvice {
                                                 e.getMessage()),
                                 status);
         }*/
-
+        
 
         
         @ExceptionHandler(CustomErrorException.class) // exception handled

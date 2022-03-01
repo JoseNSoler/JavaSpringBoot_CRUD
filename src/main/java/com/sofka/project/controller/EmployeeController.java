@@ -49,7 +49,10 @@ public class EmployeeController {
 
 
     // Get all tables Project on DB
-
+    @GetMapping(value = {""})
+    public Iterable<Employee> getAllEmployee(){
+        return employeeServiceImpl.getAllEmployee();
+    }
     
     @PostMapping(value = {""})
     public EmployeeObject createEmployee(@RequestBody @Valid EmployeeObject employeeDto, BindingResult errors){

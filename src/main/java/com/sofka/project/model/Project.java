@@ -41,10 +41,15 @@ public class Project {
     }
 
     public Project(String name) {
+        this();
         this.name = name;
     }
 
-    
+    public Project(Long id, String name) {
+        this(name);
+        this.id = id;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

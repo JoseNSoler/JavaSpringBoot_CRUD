@@ -1,6 +1,8 @@
 package com.sofka.project.service;
 
 import com.sofka.project.dto.EmployeeObject;
+import com.sofka.project.dto.ProjectObject;
+import com.sofka.project.dto.RoleObject;
 import com.sofka.project.exception.CustomErrorException;
 import com.sofka.project.model.Employee;
 import com.sofka.project.model.Project;
@@ -20,6 +22,7 @@ import org.springframework.validation.annotation.Validated;
 import java.util.*;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import javax.validation.Valid;
 
@@ -40,6 +43,28 @@ public class EmployeeServiceImpl implements IEmployeeService{
             this.roleJpaRepository = roleJpaRepository;
             this.projectJpaRepository =  projectJpaRepository;
     }
+
+    @Override
+    public Iterable<Employee> getAllEmployee(){
+
+        return employeeJpaRepository.findAll();
+
+        /*
+        return StreamSupport
+                .stream(toDoListRepository.findAll().spliterator(), false)
+                .map(toDoList -> {
+                    var listDto = toDoList.getToDos()
+                            .stream()
+                            .map(item -> new ToDoObject(item.getId(), item.getName(), item.isCompleted(),
+                                    toDoList.getId()))
+                            .collect(Collectors.toSet());
+                        //
+                    return new ToDoListObject(toDoList.getId(), toDoList.getName(), listDto);
+                })
+                .collect(Collectors.toSet());
+                */
+    }
+
 
     // Create object project
     @Override

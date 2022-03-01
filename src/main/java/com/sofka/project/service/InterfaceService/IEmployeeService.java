@@ -7,4 +7,5 @@ import com.sofka.project.model.Employee;
 
 public interface IEmployeeService {
     public EmployeeObject createEmployeeDto(EmployeeObject employeeObjectUser);
+    public Iterable<Employee> getAllEmployee();
 }
