@@ -14,7 +14,6 @@ import java.util.*;
  * Representa un empleado entidad
  */
 
-@NoArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity

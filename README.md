@@ -1,4 +1,5 @@
 # Java: Servidor CRUD Springboot Hibernate
+# Trabajo en progreso.. creacion y manejo de dependencias
 
 <p align="center">
 <img src="https://www.sofka.com.co/wp-content/uploads/2021/02/sofkau-logo-horizontal.png">

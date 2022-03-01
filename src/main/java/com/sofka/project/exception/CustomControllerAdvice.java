@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 class CustomControllerAdvice {
 
         // ...
-
+        /*
         @ExceptionHandler(NullPointerException.class) // exception handled
         public ResponseEntity<ErrorResponse> handleNullPointerExceptions(
                         Exception e) {
@@ -26,21 +26,8 @@ class CustomControllerAdvice {
                                                 status,
                                                 e.getMessage()),
                                 status);
-        }
+        }*/
 
-        @ExceptionHandler(NoSuchElementException.class) // exception handled
-        public ResponseEntity<ErrorResponse> handleNoSuchElementException(
-                        Exception e) {
-                // ... potential custom logic
-
-                HttpStatus status = HttpStatus.I_AM_A_TEAPOT; // 404
-
-                return new ResponseEntity<>(
-                        new ErrorResponse(
-                                status,
-                                e.getMessage()),
-                status);
-        }
 
         
         @ExceptionHandler(CustomErrorException.class) // exception handled
@@ -65,26 +52,5 @@ class CustomControllerAdvice {
 
 
 
-        // fallback method
-        @ExceptionHandler(Exception.class) // exception handled
-        public ResponseEntity<ErrorResponse> handleExceptions(
-                        Exception e) {
 
-
-                HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; // 500
-
-                // converting the stack trace to String
-                StringWriter stringWriter = new StringWriter();
-                PrintWriter printWriter = new PrintWriter(stringWriter);
-                e.printStackTrace(printWriter);
-                String stackTrace = stringWriter.toString();
-
-                return new ResponseEntity<>(
-                                new ErrorResponse(
-                                                status,
-                                                e.getMessage(),
-                                                stackTrace // specifying the stack trace in case of 500s
-                                ),
-                                status);
-        }
 }

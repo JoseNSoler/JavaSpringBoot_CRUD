@@ -3,7 +3,6 @@ package com.sofka.project.service;
 import com.sofka.project.repository.IProjectJpaRepository;
 import com.sofka.project.service.InterfaceService.IProjectService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sofka.project.dto.ProjectObject;
 import com.sofka.project.dto.RoleObject;
@@ -22,6 +21,8 @@ import org.springframework.validation.annotation.Validated;
 import java.util.*;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 import javax.validation.Valid;
 
