@@ -1,5 +1,4 @@
 # Java: Servidor CRUD Springboot Hibernate
-# Trabajo en progreso.. creacion y manejo de dependencias
 
 <p align="center">
 <img src="https://www.sofka.com.co/wp-content/uploads/2021/02/sofkau-logo-horizontal.png">
@@ -44,4 +43,100 @@ Describiendo:
 
 <hr>
 
+## Estrcutura y modelado
+
+Para los metodos Role y Project, estan implementados CRUD por defecto, si se cambia la informacion de alguna tabla, este cambio se reflejara en las demas tablas asociadas a la misma
+
+La estructura JSON asociada los objetos son
+*Employee = Empleado*
+```JSON
+{   
+    "employeeId": "WORK123456",
+    "firstName": "Alvarado",
+    "lastName": "Hernadez",
+    "role" : {
+	    "name":"ADMIN"
+    },
+    "projects": [
+        {
+	    "name":"final cambiado"
+    }, {
+	    "name":"Projecto abecedario"
+    } 
+    ]
+}
+```
+
+*Role = Rol usuario*
+```JSON
+{
+	"name":"ADMIN"
+}
+```
+
+*Project = Project*
+```JSON
+{
+	"name":"Proyecto Empresarial 1"
+}
+```
+
 ## Operaciones permitidas
+El servidor manejara tres controladores distintos, accedidos por las direcciones:
+`http://localhost:8080/employee`
+`http://localhost:8080/role`
+`http://localhost:8080/projec`
+
+### GET
+`http://localhost:8080/employee` :
+Responde en formato JSON con todos los usuarios presentes en la DB.
+
+`http://localhost:8080/role/{id}` *ID refiere a la identificacion unica del usuario*:
+Responde en formato JSON con el usuario con el ID requerido
+
+`http://localhost:8080/project/{id}`:
+Responde en formato JSON con los usuarios que tengan el atributo y valor solicitados
+
+<hr>
+
+### POST
+`http://localhost:8080/employee` :
+*BODY enviado en formato JSON*
+```JSON
+{   
+    "employeeId": "WORK123456",
+    "firstName": "Alvarado",
+    "lastName": "Hernadez",
+    "role" : {
+	    "name":"ADMIN"
+    },
+    "projects": [
+        {
+	    "name":"Proyecto Empresarial 1"
+    }, {
+	    "name":"Implementacion final"
+    } 
+    ]
+}
+
+```
+Creacion de  projecto  en base a body peticion en formato JSON, con la informacion del usuario deseado a crear en DB. El servidor respondera en el mismo formato JSON con la informacion del usuairo creado. __Id autogenerado al crear los usuarios__
+*En caso de error en algun parametro (tipo de dato, nombre invalido atributo) el servidor devolvera un error y no creara el proyecto*
+
+<hr>
+
+### PUT
+`http://localhost:8080/project/{id}` *ID refiere a la identificacion unica del proyecto*:
+*BODY enviado en formato JSON*
+
+Modificacion de  proyecto por medio de su ID, y requiriendo un Body del usuari    en formato JSON con la nueva informacion.
+*En caso de enviar un ID no encontrado en la DB, enviara un JSON error respuesta.
+En caso de error en algun parametro (tipo de dato, nombre invalido atributo) el servidor devolvera un error y no creara el proyecto*
+
+<hr>
+
+### DELETE
+`http://localhost:8080/project/{id}` *ID refiere a la identificacion unica del rpojecto*:
+Peticion delete para eliminar el projecto con ID requerido de la base de datos
+*En caso de enviar un ID no encontrado en la DB, enviara un JSON error respuesta.*
+<hr>
